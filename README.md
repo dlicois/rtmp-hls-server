@@ -1,13 +1,13 @@
-# RTMP-HLS Docker
+# RTMP-HLS fork for pure rtmp restream
 
-**Docker image for video streaming server that supports RTMP, HLS, and DASH streams.**
+**Docker image for video streaming server that supports RTMP and HLS streams.**
 
 [![Docker Automated build](https://img.shields.io/docker/cloud/automated/alqutami/rtmp-hls.svg)](https://hub.docker.com/r/alqutami/rtmp-hls/builds/)
 [![Build Status](https://img.shields.io/docker/cloud/build/alqutami/rtmp-hls.svg)](https://hub.docker.com/r/alqutami/rtmp-hls)
 
 ## Description
 
-This Docker image can be used to create a video streaming server that supports [**RTMP**](https://en.wikipedia.org/wiki/Real-Time_Messaging_Protocol), [**HLS**](https://en.wikipedia.org/wiki/HTTP_Live_Streaming), [**DASH**](https://en.wikipedia.org/wiki/Dynamic_Adaptive_Streaming_over_HTTP) out of the box. 
+This Docker image can be used to create a video streaming server that supports [**RTMP**](https://en.wikipedia.org/wiki/Real-Time_Messaging_Protocol), [**HLS**](https://en.wikipedia.org/wiki/HTTP_Live_Streaming) out of the box. 
 It also allows adaptive streaming and custom transcoding of video streams.
 All modules are built from source on Debian and Alpine Linux base images.
 
@@ -17,7 +17,6 @@ All modules are built from source on Debian and Alpine Linux base images.
  * Default settings: 
 	* RTMP is ON
 	* HLS is ON (adaptive, 5 variants)
-	* DASH is ON 
 	* Other Nginx configuration files are also provided to allow for RTMP-only streams or no-FFmpeg transcoding. 
  * Statistic page of RTMP streams at `http://<server ip>:<server port>/stats`.
  * Available web video players (based on [video.js](https://videojs.com/) and [hls.js](https://github.com/video-dev/hls.js/)) at `/usr/local/nginx/html/players`. 
@@ -66,9 +65,8 @@ Go to Settings > Stream, choose the following settings:
 	 * Enter the streaming URL: `rtmp://<server ip>:1935/live/<stream-key>`
 	   Replace `<server ip>` with the IP of where the server is running, and
 	   `<stream-key>` with the stream key you used when setting up the stream.
-	 * For HLS and DASH, the URLs are of the forms: 
-	 `http://<server ip>:8080/hls/<stream-key>.m3u8` and 
-	 `http://<server ip>:8080/dash/<stream-key>_src.mpd` respectively.
+	 * For HLS the URLs is of the form: 
+	 `http://<server ip>:8080/hls/<stream-key>.m3u8` 
 	 * Click Play.
 
 * **Using provided web players:** <br/>
@@ -76,7 +74,6 @@ The provided demo players assume the stream-key is called `test` and the player 
 	* To play RTMP content (requires Flash): `http://localhost:8080/players/rtmp.html` 
 	* To play HLS content: `http://localhost:8080/players/hls.html`
 	* To play HLS content using hls.js library: `http://localhost:8080/players/hls_hlsjs.html`
-	* To play DASH content: `http://localhost:8080/players/dash.html`
 	* To play RTMP and HLS contents on the same page: `http://localhost:8080/players/rtmp_hls.html`
 
 	**Notes:** 
